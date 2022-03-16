@@ -1,6 +1,6 @@
 <style>
     body {
-        background-image: url("/img/fon.jpg");
+        background-image: url("/img/fon.webp");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center center;
@@ -35,32 +35,57 @@
     <div class="products">
         <?php
         include('./modules/connect.php');
-        $sql = "SELECT products.id AS product_id,
-        products.name AS product_name,
-        products.description AS product_description,
-        products.image AS product_image,
-        categories.id AS category_id,
-        categories.name AS category_name 
-        FROM products LEFT JOIN categories ON categories.id=products.category_id";
-        $query = mysqli_query($connect, $sql);
-        while ($result = mysqli_fetch_array($query)) { ?>
-            <div class="product__item">
-                <div class="product__image">
-                    <img src="/uploaded_files/<?= $result['product_image'] ?>" alt="">
-                </div>
-                <div class="product__name">
-                    <?= $result['product_name'] ?>
-                </div>
-                <div class="product__desc">
-                    <?= $result['product_description'] ?>
-                </div>
-                <div class="product__category">
-                    Ктегория: <?= $result['category_name'] ?>
-                </div>
-            </div>
-        <?php
-        }
         ?>
+        <div class="products__filter">
+            <div class="products__filter__category">
+                <?php
+                $filterCategoryQuery = mysqli_query($connect, "SELECT * FROM categories");
+                while ($result = mysqli_fetch_array($filterCategoryQuery)) { ?>
+                <div class="filter__item" dada-filter-category="<?= $result['id']?>">
+                    <?= $result['name']?>
+                </div>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="products__filter__brend">
+
+            </div>
+        </div>
+        <div class="product__items__list">
+            <?php
+            
+            $sql = "SELECT p.id, 
+        p.category_id,
+        b.name AS brend_name, 
+        p.name, 
+        c.name AS category_name, 
+        p.description, 
+        p.image FROM categories c 
+        LEFT JOIN products p ON c.id=p.category_id 
+        INNER JOIN brends b ON b.id=p.brend_id";
+            $query = mysqli_query($connect, $sql);
+            while ($result = mysqli_fetch_array($query)) { ?>
+                <div class="product__item" data-item-category="<?= $result['category_name'] ?>" data-item-brend="<?= $result['brend_name'] ?>">
+                    <div class="product__image">
+                        <img src="/uploaded_files/<?= $result['image'] ?>" alt="">
+                    </div>
+                    <div class="product__brand">
+                        <?= $result['brend_name'] ?>
+                    </div>
+                    <div class="product__name">
+                        <?= $result['name'] ?>
+                    </div>
+                    <div class="product__desc">
+                        <?= $result['description'] ?>
+                    </div>
+                </div>
+            <?php
+            }
+            ?>
+
+        </div>
+
 
     </div>
 </div>

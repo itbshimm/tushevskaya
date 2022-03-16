@@ -1,3 +1,4 @@
+
 <?php
 include('../../modules/connect.php');
 if (mysqli_connect_errno()) {
@@ -6,6 +7,8 @@ if (mysqli_connect_errno()) {
 $url = $_SERVER['REQUEST_URI'];
 $url = explode('?', $url);
 $url = $url[1];
-$sql = "DELETE FROM products WHERE id='$url'";
-mysqli_query($connect, $sql);
+$name = $_POST['name'];
+mysqli_query($connect, "UPDATE brends SET name='$name' WHERE id='$url'");
+
 header("Location: /dashboard");
+?>

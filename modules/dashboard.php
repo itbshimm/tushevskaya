@@ -13,6 +13,9 @@ if (empty($_SESSION['user_id'])) {
         <div class="table__tab" data-dashboard-tab="categories">
             Категории
         </div>
+        <div class="table__tab" data-dashboard-tab="brends">
+            Бренды
+        </div>
         <div class="table__tab" data-dashboard-tab="applications">
             Заявки
         </div>
@@ -22,7 +25,9 @@ if (empty($_SESSION['user_id'])) {
     </div>
     <div class="table__content">
         <?php
-        include('productsTable.php')
+        include('productsTable.php');
+        include('categoriesTable.php');
+        include('brendsTable.php');
         ?>
     </div>
 <?php

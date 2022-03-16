@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Мар 16 2022 г., 07:25
--- Версия сервера: 8.0.24
--- Версия PHP: 7.1.33
+-- Хост: localhost:3306
+-- Время создания: Мар 16 2022 г., 20:16
+-- Версия сервера: 8.0.28-0ubuntu0.20.04.3
+-- Версия PHP: 7.2.34-18+ubuntu20.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,12 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `brends`
+--
+
+CREATE TABLE `brends` (
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `brends`
+--
+
+INSERT INTO `brends` (`id`, `name`) VALUES
+(1, 'Apple'),
+(2, 'Samsung'),
+(3, 'Xiaomi');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `categories`
 --
 
 CREATE TABLE `categories` (
   `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -37,9 +58,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'category1'),
-(2, 'category2'),
-(3, 'category3');
+(4, 'dasfasdfaagvsdgsdg'),
+(5, 'Компьютер'),
+(6, 'Часы');
 
 -- --------------------------------------------------------
 
@@ -49,19 +70,20 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 
 CREATE TABLE `products` (
   `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text COLLATE utf8mb4_general_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `category_id` int NOT NULL
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `category_id` int NOT NULL,
+  `brend_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `image`, `category_id`) VALUES
-(8, 'rege', 'regerger', '3242c7f7cc8a6a18a3d26f8bd5da7f73.png', 1),
-(9, 'hxnbfgn', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam beatae voluptas illum perferendis, corrupti eaque, vitae eius aliquam ea rerum culpa dolor totam facilis atque nemo dolore iusto debitis iure.', 'a90d631242fece1ee244dc4d7df7a98f.jpg', 1);
+INSERT INTO `products` (`id`, `name`, `description`, `image`, `category_id`, `brend_id`) VALUES
+(40, 'Sony erexon', 'Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание', '8ee4db5a5da89b634b057e4826768299.jpg', 5, 1),
+(41, 'phone', ' Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание', 'f278c1042d6b85f78fd0765429c9745f.webp', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -71,8 +93,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `image`, `category_id`) VAL
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `user_log` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_pass` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `user_log` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -87,6 +109,12 @@ INSERT INTO `users` (`id`, `user_log`, `user_pass`) VALUES
 --
 
 --
+-- Индексы таблицы `brends`
+--
+ALTER TABLE `brends`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
@@ -97,7 +125,8 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`);
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `brend_id` (`brend_id`);
 
 --
 -- Индексы таблицы `users`
@@ -110,16 +139,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `brends`
+--
+ALTER TABLE `brends`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
@@ -135,7 +170,8 @@ ALTER TABLE `users`
 -- Ограничения внешнего ключа таблицы `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`brend_id`) REFERENCES `brends` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
