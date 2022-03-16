@@ -32,4 +32,35 @@
     </div>
     <div>
     </div>
+    <div class="products">
+        <?php
+        include('./modules/connect.php');
+        $sql = "SELECT products.id AS product_id,
+        products.name AS product_name,
+        products.description AS product_description,
+        products.image AS product_image,
+        categories.id AS category_id,
+        categories.name AS category_name 
+        FROM products LEFT JOIN categories ON categories.id=products.category_id";
+        $query = mysqli_query($connect, $sql);
+        while ($result = mysqli_fetch_array($query)) { ?>
+            <div class="product__item">
+                <div class="product__image">
+                    <img src="/uploaded_files/<?= $result['product_image'] ?>" alt="">
+                </div>
+                <div class="product__name">
+                    <?= $result['product_name'] ?>
+                </div>
+                <div class="product__desc">
+                    <?= $result['product_description'] ?>
+                </div>
+                <div class="product__category">
+                    Ктегория: <?= $result['category_name'] ?>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+
+    </div>
 </div>

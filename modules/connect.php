@@ -1,2 +1,2 @@
 <?php
-$connect = mysqli_connect('127.0.0.1', 'root', 'root', 'ooo_nit');
+$connect = mysqli_connect('localhost', 'root', '', 'nit');
