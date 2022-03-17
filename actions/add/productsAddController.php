@@ -16,12 +16,11 @@ $newFileName = md5(time() . $imageName) . '.' . $imageExtention;
 $uploadFileDir = '../../uploaded_files/';
 $dest_path = $uploadFileDir . $newFileName;
 $sql = "INSERT INTO products (name, description, image, category_id, brend_id) VALUES ('$name', '$description', '$newFileName','$category', '$brend')";
-if (move_uploaded_file($fileTmpPath, $dest_path)) {
-header("Location: /dashboard");
-exit;
+if (move_uploaded_file($fileTmpPath, $dest_path) && mysqli_query($connect, $sql)) {
+    header("Location: /dashboard");
+    exit;
 } else {
     echo "photo not uploaded" . "<br>";
     print_r($_FILES);
     error_reporting(E_ALL);
 }
-?>

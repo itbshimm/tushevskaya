@@ -9,7 +9,8 @@ $brendsQuery = mysqli_query($connect, "SELECT * FROM brends");
             <input type="text" name="name" placeholder="Наименование" required="required">
         </div>
         <div class="form__block__item">
-            <select name="category" id="" required="required">
+            <label for="category">Категория</label>
+            <select id="category" name="category" id="" required="required">
                 <option selected disabled>Выбрать</option>
                 <?php
                 while ($categoriesResult = mysqli_fetch_array($categoriesQuery)) { ?>
@@ -20,7 +21,8 @@ $brendsQuery = mysqli_query($connect, "SELECT * FROM brends");
             </select>
         </div>
         <div class="form__block__item">
-            <select name="brend" id="" required="required">
+            <label for="brend">Бренд</label>
+            <select id="brend" name="brend" id="" required="required">
                 <option selected disabled>Выбрать</option>
                 <?php
                 while ($brendsResult = mysqli_fetch_array($brendsQuery)) { ?>

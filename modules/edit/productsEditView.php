@@ -27,6 +27,7 @@ $brendsQuery = mysqli_query($connect, "SELECT * FROM brends");
             <input type="text" name="name" placeholder="Наименование" required="required" value="<?= $productItem['name'] ?>">
         </div>
         <div class=" form__block__item">
+            <label for="category">Категория</label>
             <select name="category" id="" required="required">
                 <?php
                 $productItem['category_id'];
@@ -38,7 +39,8 @@ $brendsQuery = mysqli_query($connect, "SELECT * FROM brends");
             </select>
         </div>
         <div class=" form__block__item">
-            <select name="brend" id="" required="required">
+            <label for="brend">Бренд</label>
+            <select name="brend" id="brend" required="required">
                 <?php
                 while ($brendsResult = mysqli_fetch_array($brendsQuery)) { ?>
                     <option <?php if ($productItem['brend_id'] == $brendsResult['id']) { ?> selected<?php } ?> value="<?= $brendsResult['id'] ?>"><?= $brendsResult['name'] ?></option>
