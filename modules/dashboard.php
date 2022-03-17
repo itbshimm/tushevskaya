@@ -1,8 +1,10 @@
 <?php
-session_start();
-if (empty($_SESSION['user_id'])) {
-    header("Location: /login");
-} else { ?>
+/*
+if (!isset($_COOKIE['User'])) {
+    header('Refresh: 0; url=/login');
+} else { 
+*/
+?> 
     <div class="on__main">
         <a class="on__main__btn" href="/">На главню сайта</a>
     </div>
@@ -31,5 +33,5 @@ if (empty($_SESSION['user_id'])) {
         ?>
     </div>
 <?php
-}
-?>
+ //} 
+?> 
