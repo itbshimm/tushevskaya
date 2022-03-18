@@ -37,29 +37,29 @@
         include('./modules/connect.php');
         ?>
         <div class="products__filter">
-            <div class="products__filter__category">
-                <div class="filter__item" data-filter-category="all">
+            <div class="products__filter__block products__filter__category">
+                <div class="filter__item filterCategory" data-filter-category="all">
                     Все
                 </div>
                 <?php
                 $filterCategoryQuery = mysqli_query($connect, "SELECT * FROM categories");
                 while ($result = mysqli_fetch_array($filterCategoryQuery)) { ?>
-                    <div class="filter__item" data-filter-category="<?= $result['id'] ?>">
+                    <div class="filter__item filterCategory" data-filter-category="<?= $result['id'] ?>">
                         <?= $result['name'] ?>
                     </div>
                 <?php
                 }
                 ?>
             </div>
-            <div class="products__filter__brend">
+            <div class="products__filter__block products__filter__brend">
                 <div class="products__filter__category">
-                    <div class="filter__item" data-filter-brend="all">
+                    <div class="filter__item filterBrend" data-filter-brend="all">
                         Все
                     </div>
                     <?php
                     $filterBrendQuery = mysqli_query($connect, "SELECT * FROM brends");
                     while ($result = mysqli_fetch_array($filterBrendQuery)) { ?>
-                        <div class="filter__item" data-filter-brend="<?= $result['name'] ?>">
+                        <div class="filter__item filterBrend" data-filter-brend="<?= $result['name'] ?>">
                             <?= $result['name'] ?>
                         </div>
                     <?php
@@ -69,6 +69,9 @@
             </div>
         </div>
         <div class="product__items__list">
+            <div class="filters_test">
+                Нет товаров
+            </div>
             <?php
 
             $sql = "SELECT p.id, 
@@ -102,9 +105,7 @@
             ?>
 
         </div>
-        <div class="filters_test">
-            Нет товаров
-        </div>
+
 
 
     </div>

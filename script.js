@@ -13,53 +13,96 @@ $(function () {
       )
       .show();
   });
-  $(".filter__item").click(function () {
-    $(this).toggleClass("active");
-    $(".product__item").each(function () {
-      $model = $(".product__item");
-      $model_data = $(this).data();
-      $array_model = $.makeArray($model);
-      console.log($model_data);
-      $categoryFilter = $(".filter__item.active").attr("data-filter-category");
+  // $(".filter__item").click(function () {
+  //   $(this)
+  //     .closest(".products__filter__block")
+  //     .find(".filter__item")
+  //     .removeClass("active");
+  //   $(this).addClass("active");
+  //   $(".product__item").each(function () {
+  //     $model = $(".product__item");
+  //     $model_data = $(this).data();
+  //     $array_model = $.makeArray($model);
+  //     console.log($array_model["ariaAtomic"]);
 
-      if ($categoryFilter == "all") {
-        $categoryFilter = !$(".filter__item.active").attr(
+  //     $categoryFilter = $(".filter__item.active").attr("data-filter-category");
+
+  //     if ($categoryFilter == "all") {
+  //       $categoryFilter = !$(".filter__item.active").attr(
+  //         "data-filter-category"
+  //       );
+  //     }
+
+  //     $brendFilter = $(".filter__item.active").attr("data-filter-brend");
+
+  //     if ($brendFilter == "all") {
+  //       $brendFilter = !$(".filter__item.active").attr("data-filter-brend");
+  //     }
+
+  //     $model.show();
+
+  //     if (
+  //       $(".filter__item.active").attr("data-filter-category") ==
+  //       $categoryFilter
+  //     ) {
+  //       $(".product__item")
+  //         .filter(":not([data-item-category='" + $categoryFilter + "'])")
+  //         .show();
+  //     }
+
+  //     if ($(".filter__item.active").attr("data-filter-brend") == $brendFilter) {
+  //       $(".product__item")
+  //         .filter(":not([data-item-category='" + $brendFilter + "'])")
+  //         .hide();
+  //     }
+  //     $array_model.sort(function (a, b) {
+  //       return $(a).data("itemCategory") - $(b).data("itemCategory");
+  //     });
+  //     console.log($array_model);
+  //     $($array_model).appendTo(".product__items__list");
+  //   });
+
+  //   if ($(".product__item").is(":visible")) {
+  //     $(".filters_test").hide();
+  //   } else {
+  //     $(".filters_test").show();
+  //   }
+  // });
+  $(".filter__item").click(function () {
+    $(this)
+      .closest(".products__filter__block")
+      .find(".filter__item")
+      .removeClass("active");
+    $(this).addClass("active");
+    $(".product__item").each(function () {
+      $filterCategory = $(".filterCategory.active").attr(
+        "data-filter-category"
+      );
+
+      $filterBrend = $(".filterBrend.active").attr("data-filter-brend");
+      console.log($filterCategory, $filterBrend);
+      $(".product__item").show();
+      if ($filterCategory == "all" || $filterCategory == undefined) {
+        $filterCategory = !$(".filterCategory.active").attr(
           "data-filter-category"
         );
+      } else {
+        $(
+          ".product__item:not([data-item-category='" + $filterCategory + "'])"
+        ).hide();
       }
-
-      $brendFilter = $(".filter__item.active").attr("data-filter-brend");
-
-      if ($brendFilter == "all") {
-        $brendFilter = !$(".filter__item.active").attr("data-filter-brend");
+      if ($filterBrend == "all" || $filterBrend == undefined) {
+        $filterBrend = !$(".filterBrend.active").attr("data-filter-brend");
+      } else {
+        $(
+          ".product__item:not([data-item-brend='" + $filterBrend + "'])"
+        ).hide();
       }
-
-      $model.show();
-
-      if (
-        $(".filter__item.active").attr("data-filter-category") ==
-        $categoryFilter
-      ) {
-        $(".product__item")
-          .not("[data-item-category = '" + $categoryFilter + "']")
-          .hide();
-      }
-
-      if ($(".filter__item.active").attr("data-filter-brend") == $brendFilter) {
-        $(".product__item")
-          .not("[data-item-brend= '" + $brendFilter + "']")
-          .hide();
-      }
-      $array_model.sort(function (a, b) {
-        return $(a).data("item-category") - $(b).data("item-brend");
-      });
-      $($array_model).appendTo(".product__items__list");
     });
-
-    if ($(".product__item").is(":visible")) {
-      $(".filters_test").hide();
-    } else {
-      $(".filters_test").show();
-    }
   });
+  if ($(".product__items__list").find(".product__item").is(":visible")) {
+    $(".filters_test").hide();
+  } else {
+    $(".filters_test").show();
+  }
 });
