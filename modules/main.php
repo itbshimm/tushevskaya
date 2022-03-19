@@ -30,14 +30,13 @@
             INFO.NITSHOP.RU
         </div>
     </div>
-    <div>
-    </div>
     <div class="products">
         <?php
         include('./modules/connect.php');
         ?>
         <div class="products__filter">
             <div class="products__filter__block products__filter__category">
+                <div style="text-align: center; margin-bottom:10px">Категория</div>
                 <div class="filter__item filterCategory" data-filter-category="all">
                     Все
                 </div>
@@ -53,6 +52,7 @@
             </div>
             <div class="products__filter__block products__filter__brend">
                 <div class="products__filter__category">
+                    <div style="text-align: center; margin-bottom:10px">Бренд</div>
                     <div class="filter__item filterBrend" data-filter-brend="all">
                         Все
                     </div>
@@ -69,6 +69,10 @@
             </div>
         </div>
         <div class="product__items__list">
+            <div class="search__filter">
+                <div class="search__filter__title">Поиск</div>
+                <input type="text">
+            </div>
             <div class="filters_test">
                 Нет товаров
             </div>
