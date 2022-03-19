@@ -5,7 +5,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     $password = $_POST['password'];
     $queryLogin = mysqli_query($connect, "SELECT *
             FROM users
-            WHERE user_log= '$login' AND user_pass = '$password'
+            WHERE user_log='$login' AND user_pass ='$password'
             LIMIT 1");
     if (mysqli_num_rows($queryLogin) == 1) {
         $userLogin = mysqli_fetch_assoc($queryLogin);

@@ -6,7 +6,7 @@ if (!isset($_COOKIE['User'])) {
 */
 ?>
 <div class="on__main">
-    <a class="on__main__btn" href="/">На главню сайта</a>
+    <a class="on__main__btn" href="/">На главную сайта</a>
 </div>
 <div class="table__tabs">
     <div class="table__tab" data-dashboard-tab="products">
