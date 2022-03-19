@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost:3306
--- Время создания: Мар 16 2022 г., 20:16
--- Версия сервера: 8.0.28-0ubuntu0.20.04.3
--- Версия PHP: 7.2.34-18+ubuntu20.04.1+deb.sury.org+1
+-- Хост: 127.0.0.1:3306
+-- Время создания: Мар 19 2022 г., 22:07
+-- Версия сервера: 8.0.24
+-- Версия PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `brends` (
   `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -40,7 +39,13 @@ CREATE TABLE `brends` (
 INSERT INTO `brends` (`id`, `name`) VALUES
 (1, 'Apple'),
 (2, 'Samsung'),
-(3, 'Xiaomi');
+(3, 'Xiaomi'),
+(5, 'Honor'),
+(6, 'Huawei'),
+(7, 'OnePlus'),
+(8, 'AMD'),
+(9, 'Intel'),
+(10, 'Google');
 
 -- --------------------------------------------------------
 
@@ -58,9 +63,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(4, 'dasfasdfaagvsdgsdg'),
-(5, 'Компьютер'),
-(6, 'Часы');
+(10, 'Смартфон'),
+(11, 'Часы'),
+(12, 'Наушники'),
+(14, 'Ноутбук'),
+(15, 'Процессор');
 
 -- --------------------------------------------------------
 
@@ -77,13 +84,18 @@ CREATE TABLE `products` (
   `brend_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Дамп данных таблицы `products`
+-- Структура таблицы `reviews`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `image`, `category_id`, `brend_id`) VALUES
-(40, 'Sony erexon', 'Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание', '8ee4db5a5da89b634b057e4826768299.jpg', 5, 1),
-(41, 'phone', ' Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание', 'f278c1042d6b85f78fd0765429c9745f.webp', 4, 2);
+CREATE TABLE `reviews` (
+  `id` int NOT NULL,
+  `user_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `review_text` text COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -129,6 +141,12 @@ ALTER TABLE `products`
   ADD KEY `brend_id` (`brend_id`);
 
 --
+-- Индексы таблицы `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -142,19 +160,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `brends`
 --
 ALTER TABLE `brends`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT для таблицы `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
