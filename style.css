@@ -195,11 +195,39 @@
 .del_block a {
   color: red;
 }
+.main {
+  background-color: #fff;
+}
+.main__tabs {
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+  padding: 10px 0;
+}
+.main__tab {
+  padding: 10px 20px;
+  margin: 0 50px;
+  font-size: 16pt;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: 0.25s;
+}
+.main__tab:hover {
+  background-color: transparent;
+  border: 1px solid #fff;
+  transition: 0.25s;
+}
+.main__tab.active {
+  background-color: #fff;
+  color: #000;
+}
 .products {
   padding: 30px 0;
   display: flex;
   flex-wrap: wrap;
-  background: #fff;
 }
 .products > div {
   padding: 0 20px;
@@ -244,17 +272,17 @@
 }
 @media (max-width: 1440px) {
   .product__item {
-    width: 30%;
+    width: 32%;
   }
 }
 @media (max-width: 1024px) {
   .product__item {
-    width: 40%;
+    width: 49%;
   }
 }
-@media (max-width: 960px) {
+@media (max-width: 640px) {
   .product__item {
-    width: 49%;
+    width: 99%;
   }
 }
 .product__item > div {
@@ -268,6 +296,11 @@
 }
 .product__name {
   font-size: 24pt;
+  margin: 0 -15px;
+  background: #000;
+  color: #fff;
+  padding: 5px 15px;
+  font-weight: 700;
 }
 .product__desc {
   color: gray;
@@ -293,4 +326,70 @@
 .search__filter__title {
   font-size: 16px;
   margin-right: 10px;
+}
+.review__content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.review__add div {
+  padding: 10px 0;
+}
+.review__add__name input,
+.review__add__email input,
+.review__add__text textarea {
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+.review__add input:focus-visible,
+.review__add textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.review__add__btn input {
+  padding: 10px 20px;
+  background-color: #0d6efd;
+  border: 1px solid #0d6efd;
+  transition: 0.25s;
+  color: #fff;
+  font-size: 14pt;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.review__add__btn input:hover {
+  background-color: transparent;
+  transition: 0.25s;
+  color: #000;
+}
+.review__item {
+  padding: 15px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 40%);
+  background: #f9e2da;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+.review__user__name {
+  font-size: 18pt;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+.reviews__list {
+  margin-top: 50px;
+}
+.page404 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0;
+  left: 0;
+  font-weight: 900;
+  font-size: 50pt;
+  display: table;
+  text-align: center;
 }

@@ -40,6 +40,13 @@
     include('modules/edit/brendsEditView.php');
     // бренды
 
+    // отзывы
+  } elseif ($url == "/dashboard/reviews/add") {
+    include('modules/add/reviewsAddView.php');
+  } elseif ($url == "/dashboard/reviews/edit") {
+    include('modules/edit/reviewsEditView.php');
+    // отзывы
+
   } else {
     include('modules/404.php');
   }

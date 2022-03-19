@@ -1,4 +1,3 @@
-
 <?php
 include('../../modules/connect.php');
 if (mysqli_connect_errno()) {
@@ -9,6 +8,4 @@ $url = explode('?', $url);
 $url = $url[1];
 $name = $_POST['name'];
 mysqli_query($connect, "UPDATE categories SET name='$name' WHERE id='$url'");
-
 header("Location: /dashboard");
-?>

@@ -6,6 +6,5 @@ if (mysqli_connect_errno()) {
 $url = $_SERVER['REQUEST_URI'];
 $url = explode('?', $url);
 $url = $url[1];
-$name = $_POST['name'];
-mysqli_query($connect, "UPDATE brends SET name='$name' WHERE id='$url'");
+mysqli_query($connect, "DELETE FROM reviews WHERE id='$url'");
 header("Location: /dashboard");

@@ -1,4 +1,3 @@
-
 <?php
 include('../../modules/connect.php');
 if (mysqli_connect_errno()) {
@@ -31,5 +30,3 @@ if ($imageFile != '') {
     mysqli_query($connect, $sql);
 }
 header("Location: /dashboard");
-
-?>

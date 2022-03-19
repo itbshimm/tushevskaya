@@ -62,4 +62,14 @@ $(function () {
       $(".product__item").show();
     }
   });
+  $(".main__tabs .main__tab").click(function () {
+    let tabName = $(this).attr("data-main-tab");
+    if ($(this).hasClass("active")) {
+    } else {
+      $(".main__tab").toggleClass("active");
+      $(".main__tab__content").hide();
+      console.log(tabName);
+      $(".main__tab__content[data-main-content='" + tabName + "']").show();
+    }
+  });
 });
