@@ -9,6 +9,9 @@
 </style>
 <div class="blur">
     <div class="header">
+        <a class="login__btn" href="/login">
+            Войти
+        </a>
         <div class="account">
 
         </div>
