@@ -77,11 +77,7 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 // ; //отправляет получателю на емайл значения переменных
 
 error_reporting(E_ALL);
-if (mail($to, $tema, $message, $headers)) {
-    echo "сообщение отправлено";
-} else {
-    echo "не отправлено";
-}
+mail($to, $subject, $message, $headers);
 
 mysqli_query($connect, "INSERT INTO applications (name, phone, email, product_id) VALUES ('$name', '$phone', '$email', '$productId')");
 header('Location: /');
