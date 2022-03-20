@@ -47,13 +47,29 @@
     include('modules/edit/reviewsEditView.php');
     // отзывы
 
+    // заявки
+  } elseif ($url == "/dashboard/applications/add") {
+    include('modules/add/applicationsAddView.php');
+  } elseif ($url == "/dashboard/applications/edit") {
+    include('modules/edit/applicationsEditView.php');
+    // заявки
+
   } else {
     include('modules/404.php');
   }
 
   ?>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="/script.js"></script>
+  <script>
+    $(function() {
+      $(".table__sorter").tablesorter({
+        sortList: [
+          [0, 0],
+          [1, 0]
+        ]
+      });
+    });
+  </script>
 </body>
 
 </html>

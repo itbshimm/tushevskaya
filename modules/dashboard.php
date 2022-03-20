@@ -31,6 +31,7 @@ if (!isset($_COOKIE['User'])) {
     include('categoriesTable.php');
     include('brendsTable.php');
     include('reviewsTable.php');
+    include('applicationsTable.php')
     ?>
 </div>
 <?php

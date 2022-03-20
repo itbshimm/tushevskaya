@@ -72,4 +72,22 @@ $(function () {
       $(".main__tab__content[data-main-content='" + tabName + "']").show();
     }
   });
+  $(".product__btn").click(function () {
+    let productId = $(this).attr("id");
+    console.log(productId);
+    $('.product__modal[id="' + productId + '"]')
+      .addClass("active")
+      .show();
+  });
+  $(".modal__product__close").click(function () {
+    $(this).closest(".product__modal").hide();
+  });
+  $(".product__form__tel").inputmask("+7 (999) 999 99-99");
+  // $(".product__form__btn").click(function () {
+  //   let val = $(this)
+  //     .closest(".product__modal")
+  //     .find('input[type="tel"]')
+  //     .val();
+  // });
+  $(".table__sorter").tablesorter();
 });

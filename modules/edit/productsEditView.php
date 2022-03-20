@@ -6,16 +6,16 @@ $productId = $url[1];
 $productsQuery = mysqli_query(
     $connect,
     "SELECT p.id, 
-p.category_id,
-p.brend_id,
-b.name AS brend_name, 
-p.name, 
-c.name AS category_name, 
-p.description, 
-p.image FROM categories c 
-LEFT JOIN products p ON c.id=p.category_id 
-INNER JOIN brends b ON b.id=p.brend_id
-WHERE p.id='$productId'"
+    p.category_id,
+    p.brend_id,
+    b.name AS brend_name, 
+    p.name, 
+    c.name AS category_name, 
+    p.description, 
+    p.image FROM categories c 
+    LEFT JOIN products p ON c.id=p.category_id 
+    INNER JOIN brends b ON b.id=p.brend_id
+    WHERE p.id='$productId'"
 );
 $productItem = mysqli_fetch_assoc($productsQuery);
 $categoriesQuery = mysqli_query($connect, "SELECT * FROM categories");

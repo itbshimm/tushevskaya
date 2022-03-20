@@ -104,7 +104,7 @@
                 while ($resultProductsMain = mysqli_fetch_array($queryProductsMain)) { ?>
                     <div class="product__item" data-item-category="<?= $resultProductsMain['category_id'] ?>" data-item-brend="<?= $resultProductsMain['brend_name'] ?>">
                         <div class="product__image">
-                            <img src="/uploaded_files/<?= $resultProductsMain['image'] ?>" alt="">
+                            <img src="/uploaded_files/<?= $resultProductsMain['image'] ?>" alt="<?= $resultProductsMain['name'] ?>">
                         </div>
                         <div class="product__brand">
                             <?= $resultProductsMain['brend_name'] ?>
@@ -112,8 +112,8 @@
                         <div class="product__name">
                             <?= $resultProductsMain['name'] ?>
                         </div>
-                        <div class="product__desc">
-                            <?= $resultProductsMain['description'] ?>
+                        <div class="product__btn product__btn__modal" id="productId<?= $resultProductsMain['id'] ?>">
+                            Подробнее
                         </div>
                     </div>
                 <?php
@@ -163,3 +163,50 @@
         </div>
     </div>
 </div>
+<?php
+
+$sql = "SELECT p.id, 
+        p.category_id,
+        b.name AS brend_name, 
+        p.name, 
+        c.id AS category_id,
+        c.name AS category_name, 
+        p.description, 
+        p.image FROM categories c 
+        LEFT JOIN products p ON c.id=p.category_id 
+        INNER JOIN brends b ON b.id=p.brend_id";
+$queryProductsMain = mysqli_query($connect, $sql);
+while ($resultProductsMain = mysqli_fetch_array($queryProductsMain)) {
+?>
+    <div class="product__modal" id="productId<?= $resultProductsMain['id'] ?>">
+        <div class="product__modal__content">
+            <div class="modal__product__image">
+                <div>
+                    <img src="/uploaded_files/<?= $resultProductsMain['image'] ?>" alt=" <?= $resultProductsMain['name'] ?>">
+                </div>
+                <div class="modal__product__form">
+                    <form action="../actions/applicationsAdd.php" method="post">
+                        <input type="text" placeholder="Ваше имя" required="required" name="name">
+                        <input type="email" placeholder="Ваш Email" required="required" name="email">
+                        <input type="tel" placeholder="Введите телефон" required="required" class="product__form__tel" name="phone">
+                        <input type="hidden" value="<?= $resultProductsMain['id'] ?>" name="product_id">
+                        <input type="submit" class="product__form__btn" value="Заказать">
+                    </form>
+                </div>
+            </div>
+            <div class="modal__product__info">
+                <div class="modal__product__name">
+                    <?= $resultProductsMain['brend_name'] ?> <?= $resultProductsMain['name'] ?>
+                </div>
+                <div class="modal__product__desc">
+                    <?= $resultProductsMain['description'] ?>
+                </div>
+            </div>
+            <div class="modal__product__close">
+                &#10006;
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>
