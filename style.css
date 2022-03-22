@@ -453,7 +453,7 @@
   flex-wrap: wrap;
 }
 .modal__product__image {
-  max-width: 400px;
+  width: 40%;
 }
 .modal__product__image img {
   width: 100%;
@@ -461,6 +461,15 @@
 }
 .modal__product__info {
   padding: 0 20px;
+  width: 60%;
+}
+@media (max-width: 1024px) {
+  .modal__product__image {
+    width: 100%;
+  }
+  .modal__product__info {
+    width: 100%;
+  }
 }
 .modal__product__name {
   font-size: 20pt;
