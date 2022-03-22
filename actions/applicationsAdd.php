@@ -3,6 +3,7 @@ include('../modules/connect.php');
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
+$comment = $_POST['comment'];
 $serverName =  $_SERVER['SERVER_NAME'];
 $productId = $_POST['product_id'];
 $productMailQuery = mysqli_query($connect, "SELECT * FROM products WHERE id = '$productId'");
@@ -67,6 +68,10 @@ $message = '<!DOCTYPE html>
             <div class="product__desc">
                 ' . $productMailData['description'] . '
             </div>
+            <div class="product__desc">
+                <h4>Комментарий к заявке:</h4>
+                ' . $productMailData['comment'] . '
+            </div>
         </div>
     </div>
 </body>
@@ -79,5 +84,5 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 error_reporting(E_ALL);
 mail($to, $subject, $message, $headers);
 
-mysqli_query($connect, "INSERT INTO applications (name, phone, email, product_id) VALUES ('$name', '$phone', '$email', '$productId')");
+mysqli_query($connect, "INSERT INTO applications (name, phone, email, comment, product_id) VALUES ('$name', '$phone', '$email', '$comment', '$productId')");
 header('Location: /');

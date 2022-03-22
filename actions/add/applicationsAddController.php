@@ -6,8 +6,9 @@ if (mysqli_connect_errno()) {
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
+$comment = $_POST['comment'];
 $productName = $_POST['product_name'];
-$sql = "INSERT INTO applications (name, phone, email, product_id) VALUES ('$name', '$phone', '$email', '$productName')";
+$sql = "INSERT INTO applications (name, phone, email, comment, product_id) VALUES ('$name', '$phone', '$email', '$comment', '$productName')";
 if (mysqli_query($connect, $sql)) {
     header("Location: /dashboard");
     exit;

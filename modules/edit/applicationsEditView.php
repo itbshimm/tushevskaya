@@ -9,6 +9,7 @@ $applicationsQuery = mysqli_query(
         a.name,
         a.phone,
         a.email,
+        a.comment,
         a.product_id,
         p.name AS p_name 
         FROM applications a
@@ -28,6 +29,9 @@ $productsQuery = mysqli_query($connect, "SELECT * FROM products");
         </div>
         <div class="form__block__item">
             <input type="email" name="email" placeholder="Email" required="required" value="<?= $applicationsItem['email'] ?>">
+        </div>
+        <div class="form__block__item">
+            <textarea name="comment" required="required" cols="30" rows="10" placeholder="Комментарий к заявке"><?= $applicationsItem['comment'] ?></textarea>
         </div>
         <div class=" form__block__item">
             <label for="product">Товар</label>

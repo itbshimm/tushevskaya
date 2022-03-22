@@ -6,6 +6,7 @@
         a.name,
         a.phone,
         a.email,
+        a.comment,
         a.product_id,
         p.name AS p_name 
         FROM applications a
@@ -22,6 +23,7 @@
                 <td>Имя</td>
                 <td>Телефон</td>
                 <td>Email</td>
+                <td>Комментарий</td>
                 <td>Товар</td>
                 <td>Редактировать</td>
                 <td>Удалить</td>
@@ -35,6 +37,7 @@
                     <td><?= $applicationsArrayList['name'] ?></td>
                     <td><?= $applicationsArrayList['phone'] ?></td>
                     <td><?= $applicationsArrayList['email'] ?></td>
+                    <td><?= $applicationsArrayList['comment'] ?></td>
                     <td><?= $applicationsArrayList['p_name'] ?></td>
                     <td class="edit_block"><a href="/dashboard/applications/edit?<?= $applicationsArrayList['id'] ?>"><i class="bi bi-gear-fill"></i></a></td>
                     <td class="del_block"><a href="/actions/del/applicationsDelController.php?<?= $applicationsArrayList['id'] ?>"><i class="bi bi-trash-fill"></i></a></td>

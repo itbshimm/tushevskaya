@@ -14,6 +14,9 @@ $productsQuery = mysqli_query($connect, "SELECT * FROM products");
             <input type="tel" class="product__form__tel" name="phone" placeholder="Телефон" required="required">
         </div>
         <div class="form__block__item">
+            <textarea name="comment" required="required" cols="30" rows="10" placeholder="Комментарий к заявке"></textarea>
+        </div>
+        <div class="form__block__item">
             <label for="products">Товар</label>
             <select id="products" name="product_name" id="" required="required">
                 <option selected disabled>Выбрать</option>

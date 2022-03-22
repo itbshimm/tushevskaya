@@ -450,6 +450,7 @@
   padding: 20px;
   display: flex;
   position: relative;
+  flex-wrap: wrap;
 }
 .modal__product__image {
   max-width: 400px;
@@ -480,13 +481,17 @@
 .modal__product__form {
   margin-top: 10px;
 }
-.modal__product__form input {
+.modal__product__form input,
+.modal__product__form textarea {
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
+}
+.modal__product__form textarea {
+  max-width: 100%;
 }
 .modal__product__form input:focus-visible {
   outline: none;

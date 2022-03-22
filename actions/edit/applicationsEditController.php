@@ -9,8 +9,9 @@ $url = $url[1];
 $name = $_POST['name'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
+$comment = $_POST['comment'];
 $product = $_POST['product_name'];
 
-$sql = "UPDATE applications SET name='$name', phone='$phone', email='$email', product_id='$product' WHERE id='$url'";
+$sql = "UPDATE applications SET name='$name', phone='$phone', email='$email', comment='$comment' product_id='$product' WHERE id='$url'";
 mysqli_query($connect, $sql);
 header("Location: /dashboard");
