@@ -191,7 +191,7 @@ while ($resultProductsMain = mysqli_fetch_array($queryProductsMain)) {
                         <input type="tel" placeholder="Введите телефон" required="required" class="product__form__tel" name="phone">
                         <textarea name="comment" required="required" cols="30" rows="10" placeholder="Комментарий к заявке"></textarea>
                         <input type="hidden" value="<?= $resultProductsMain['id'] ?>" name="product_id">
-                        <input type="submit" class="product__form__btn" value="Заказать">
+                        <input type="submit" class="product__form__btn" value="Отправить">
                     </form>
                 </div>
             </div>
